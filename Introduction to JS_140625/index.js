@@ -1,60 +1,124 @@
-//var s1 = "Rishabh";
+//var s1 = "abhishek";
 //console.log(s1);
 
-//var s1 = "Ayush";
+//var s1 = "aryan";
+//console.log(s1);
 
-// console.log(s1);
+// let
 
-//let s2 ="Suraj";
+//let s2 = "hunny";
+//console.log(s2);
 
 //console.log(s2);
 
-//let s2 ="Piyush";
+//s2 = "Aman";
+//console.log(s2);    
 
-//console.log(s2);
+//let s3 = "Pratyush";  
+//console.log(s3);
 
-// Lexical Scope
+//s3 = "harsh";
+//console.log(s3);
 
-//var a = 4000;
 
-//{
-    //var a = 100;
-    //var b= 200;
-  //  var c = 300;
+//functions
 
-//}
-//console.log(a);
+function sumOfTwo(a,b){
+        let ans = a+b;
 
-//console.log(b);
+        return ans;
+    }
 
-//console.log(c);//
+let sumOfTwoBy = sumOfTwo(2,3);
+console.log(sumOfTwoBy);
 
-// closure in js
+function sum(a,b){
+    console.log(a+b);
+    
+}
 
-//function z(){
-    //var b=900;
-    //function x(){
-        //var a =7;
+sum(2,3);
 
-        //function y(){
-         //   console.log(a,b);
-       // }
-     //   y();
-   // }
- //   x();
-//}
-//z();
-// settimeout
+var name = () =>{
+        console.log("sumit")
+    }
+    
+console.log(name);
+
+console.log(name()); 
+    
+name();
+
+
+//closure function
+
+function a(){
+    var x=7;
+    var y=6;
+    function b(){
+        var y=8;
+        console.log(y);
+    }
+    y=10;
+    b(); 
+}
+a();
+
+function x(){
+    var a=7;
+    function y(){
+        console.log(a);
+    }
+    a=100;
+    return y;
+}
+    
+var z=x();
+console.log(z); 
+z(); 
+    
+function z(){
+    var b =900;
+    function x(){
+        var a = 7;
+        function y(){
+            console.log(a,b);
+        }
+        y(); 
+    }
+    x();   
+}
+z();  
+
+//settimeout
 
 //setTimeout(()=>{
-  //  console.log("Hello I am setTimeout Function I'll after 2 secs");
+//    console.log("i'll print after 2 secs");
 //},2000);
-fdhdggfdg
 
-//SERTINTERVAL
+//SETINTERVAL 
 
-for (var i=0; i<=10;i++){
-    setTimeout(()=>{
-        console.log(i);
-    },2000)
+//setInterval(()=>{
+//    console.log("i'll print after 2 secs");
+//},2000)
+
+
+//for loop
+
+
+for(var i=0; i<10; i++){
+
+    console.log(i); 
+    
 }
+
+
+for(var i=0; i<10; i++){
+    setTimeout(function(){
+        console.log(i);
+    }, 2000);
+}
+
+
+
+//event listeners
