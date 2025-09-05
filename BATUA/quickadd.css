@@ -1,0 +1,168 @@
+/* Quick Add Styles */
+.quickadd {
+    padding: 3rem 0;
+}
+
+.quickadd-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.quickadd-header .section-title {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.quickadd-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Quick Add Grid */
+.quick-add-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.quick-expense-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-expense-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.quick-expense-item.clicked {
+    animation: clickAnimation 0.6s ease-out;
+}
+
+@keyframes clickAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.edit-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: var(--bg-tertiary);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.quick-expense-item:hover .edit-btn {
+    opacity: 1;
+}
+
+.edit-btn:hover {
+    background: var(--border);
+    color: var(--text-primary);
+}
+
+.quick-expense-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.quick-expense-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.quick-expense-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.add-new-quick {
+    border: 2px dashed var(--border);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.add-new-quick:hover {
+    border-color: var(--primary);
+    background: var(--bg-card);
+    color: var(--primary);
+}
+
+.add-new-quick .plus-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: var(--text-secondary);
+}
+
+.add-new-quick:hover .plus-icon {
+    color: var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .quick-add-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .quick-expense-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .quick-expense-icon {
+        font-size: 2.5rem;
+    }
+
+    .quick-expense-name {
+        font-size: 1.1rem;
+    }
+
+    .quick-expense-price {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-add-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .quickadd-header .section-title {
+        font-size: 2rem;
+    }
+
+    .quickadd-header .subtitle {
+        font-size: 1rem;
+    }
+}

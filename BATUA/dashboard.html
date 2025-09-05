@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - BATUA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal auth-modal active">
+        <div class="modal-content auth-content">
+            <div class="auth-header">
+<h1><i class="fas fa-wallet"></i> BATUA</h1>
+                <p>Your smart expense tracking companion</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</button>
+                <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signinForm" class="auth-form active">
+                <div class="social-auth">
+                    <button class="social-btn google-btn" onclick="signInWithGoogle()">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <button class="social-btn phone-btn" onclick="signInWithPhone()">
+                        <i class="fas fa-phone"></i> Continue with Phone
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <form onsubmit="handleEmailSignIn(event)">
+                    <div class="form-group">
+                        <input type="email" id="signinEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signinPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Sign In</button>
+                </form>
+
+                <p class="forgot-password"><a href="#" onclick="forgotPassword()">Forgot password?</a></p>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signupForm" class="auth-form">
+                <div class="social-auth">
+                    <button class="social-btn google-btn" onclick="signUpWithGoogle()">
+                        <i class="fab fa-google"></i> Sign up with Google
+                    </button>
+                    <button class="social-btn phone-btn" onclick="signUpWithPhone()">
+                        <i class="fas fa-phone"></i> Sign up with Phone
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <form onsubmit="handleEmailSignUp(event)">
+                    <div class="form-group">
+                        <input type="text" id="signupName" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="signupEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Create Account</button>
+                </form>
+            </div>
+
+            <!-- Phone Verification -->
+            <div id="phoneVerification" class="auth-form">
+                <div class="phone-input-group">
+                    <select id="countryCode">
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+91" selected>🇮🇳 +91</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+86">🇨🇳 +86</option>
+                    </select>
+                    <input type="tel" id="phoneNumber" placeholder="Enter phone number">
+                </div>
+                <button onclick="sendOTP()" class="auth-submit-btn">Send OTP</button>
+
+                <div id="otpSection" style="display: none;">
+                    <div class="form-group">
+                        <input type="text" id="otpInput" placeholder="Enter 6-digit OTP" maxlength="6">
+                    </div>
+                    <button onclick="verifyOTP()" class="auth-submit-btn">Verify OTP</button>
+                    <p class="resend-otp">Didn't receive OTP? <a href="#" onclick="resendOTP()">Resend</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget Alert Modal -->
+    <div id="budgetAlertModal" class="modal budget-alert-modal">
+        <div class="modal-content alert-content">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2>Budget Alert!</h2>
+            <p id="budgetAlertMessage">You've exceeded your monthly budget limit.</p>
+            <div class="alert-actions">
+                <button onclick="closeBudgetAlert()" class="btn-secondary">Dismiss</button>
+                <button onclick="showPage('settings')" class="btn-primary">Adjust Budget</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" style="display: none;">
+        <div class="nav-container">
+            <div class="logo">
+<i class="fas fa-wallet"></i> BATUA
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Open navigation" onclick="toggleMobileNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html" onclick="showPage('home')" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="dashboard.html" onclick="showPage('dashboard')" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="quickadd.html" onclick="showPage('quickadd')" class="nav-link"><i class="fas fa-plus-circle"></i> Quick Add</a></li>
+                <li><a href="analytics.html" onclick="showPage('analytics')" class="nav-link"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="reports.html" onclick="showPage('reports')" class="nav-link"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="settings.html" onclick="showPage('settings')" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <button class="user-btn" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">User</span>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" onclick="showProfile()"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" onclick="exportData()"><i class="fas fa-download"></i> Export Data</a>
+                        <a href="#" onclick="signOut()"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent" style="display: none;">
+        <!-- Dashboard Page -->
+        <div class="page active" id="dashboard">
+            <div class="dashboard">
+                <div class="container">
+                    <div class="dashboard-header">
+                        <h1 class="section-title">Your Dashboard</h1>
+                        <div class="date-selector">
+                            <input type="month" id="dashboardMonth" onchange="filterByMonth()">
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="totalSpent">$0</div>
+                                <div class="stat-label">Total Spent This Month</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-receipt"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="transactionCount">0</div>
+                                <div class="stat-label">Transactions</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-piggy-bank"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="budgetRemaining">$3000</div>
+                                <div class="stat-label">Budget Remaining</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expense-form">
+                        <h2><i class="fas fa-plus"></i> Add New Expense</h2>
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> Expense added successfully!
+                        </div>
+                        <form id="expenseForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label><i class="fas fa-dollar-sign"></i> Amount</label>
+                                    <input type="number" id="amount" placeholder="0.00" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label><i class="fas fa-tag"></i> Category</label>
+                                    <select id="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="food"><i class="fas fa-utensils"></i> Food</option>
+                                        <option value="travel"><i class="fas fa-plane"></i> Travel</option>
+                                        <option value="bills"><i class="fas fa-file-invoice-dollar"></i> Bills</option>
+                                        <option value="shopping"><i class="fas fa-shopping-bag"></i> Shopping</option>
+                                        <option value="entertainment"><i class="fas fa-film"></i> Entertainment</option>
+                                        <option value="health"><i class="fas fa-heartbeat"></i> Health</option>
+                                        <option value="education"><i class="fas fa-graduation-cap"></i> Education</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-sticky-note"></i> Description</label>
+                                <input type="text" id="description" placeholder="What did you spend on?" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar"></i> Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div id="customFieldsContainer"></div>
+                            <button type="button" class="submit-btn" id="addCustomFieldBtn" style="background:var(--secondary);margin-bottom:1rem;">
+                                <i class="fas fa-plus"></i> Add Custom Field
+                            </button>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-plus"></i> Add Expense
+                            </button>
+                        </form>
+                    </div>
+
+                    <div id="expenseList" class="expense-list">
+                        <!-- Expenses will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Quick Add Item Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Quick Add Item</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="editQuickAddForm">
+                <div class="form-group">
+                    <label>Icon</label>
+                    <input type="text" id="editIcon" placeholder="🍕" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="editName" placeholder="Pizza" required>
+                </div>
+                <div class="form-group">
+                    <label>Default Price</label>
+                    <input type="number" id="editPrice" placeholder="12.99" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="editCategory" required>
+                        <option value="food">Food</option>
+                        <option value="travel">Travel</option>
+                        <option value="bills">Bills</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" id="deleteQuickItem" class="btn-danger" onclick="deleteQuickAddItem()">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

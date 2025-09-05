@@ -1,88 +1,63 @@
-// const { useCallback } = require("react");
+// // const { useCallback } = require("react");
 
-// function serveWater(callback){
-//     console.log("Serving water to the group");
-//     setTimeout(Callback,1000);
-// }
+// // function serveWater(callback){
+// //     console.log("Serving water to the group");
+// //     setTimeout(Callback,1000);
+// // }
 
-// function servesoup(callback){
-//     console.log('serving soup to the group');
-//     setTimeout(callback,1000);
-// }
+// // function servesoup(callback){
+// //     console.log('serving soup to the group');
+// //     setTimeout(callback,1000);
+// // }
 
-// function serveStarters(callback){
-//     console.log("serving starter to the group");
-//     setTimeout(callback,1000);
-// }
+// // function serveStarters(callback){
+// //     console.log("serving starter to the group");
+// //     setTimeout(callback,1000);
+// // }
 
-// function serveDrinks(callback){
-//     console.log("serving drinks to the group");
-//     setTimeout(callback,1000);
-// }
+// // function serveDrinks(callback){
+// //     console.log("serving drinks to the group");
+// //     setTimeout(callback,1000);
+// // }
 
-// function servedinner(callback){
-//     console.log("serving dinner to the group");
-//     setTimeout(callback,1000);
-// }
+// // function servedinner(callback){
+// //     console.log("serving dinner to the group");
+// //     setTimeout(callback,1000);
+// // }
 
-// function paybill(){
-//     console.log("paying the bill & out of the hotel");
-// }
+// // function paybill(){
+// //     console.log("paying the bill & out of the hotel");
+// // }
 
-// serveWater(()=>{
-//     servesoup(()=>{
-//         serveStarters(()=>{
-//             serveDrinks(()=>{
-//                 servedinner(()=>{
-//                     paybill();
-//                 })
-//             })
-//         })
-//     })
-// })
+// // serveWater(()=>{
+// //     servesoup(()=>{
+// //         serveStarters(()=>{
+// //             serveDrinks(()=>{
+// //                 servedinner(()=>{
+// //                     paybill();
+// //                 })
+// //             })
+// //         })
+// //     })
+// // })
 
-// micro vs macro
-// console.log("Program Start");
+// // micro vs macro
+// // console.log("Program Start");
 
-// setTimeout (()=>{
-// console.log("I am SetTimeout");
-// },5000);
+// // setTimeout (()=>{
+// // console.log("I am SetTimeout");
+// // },5000);
 
-// fetch("https://dummyjson.com/products"). then(function productDet(){
-// console.log("DATA : SOMETHING");
+// // fetch("https://dummyjson.com/products"). then(function productDet(){
+// // console.log("DATA : SOMETHING");
 
-// });
+// // });
 
-// // console. log("Program End");
+// // // console. log("Program End");
 
-// // Higher Order Function
+// // // Higher Order Function
 
-// const data1 = [2,5,3,6]
-
-// const data2 = [5,7,43,7]
-
-// const calculateDouble = function (x){
-//     let output = [];
-//      for (let i=0; i<x.length; i++){
-//         output.push(x[i]*x[i]);
-//     }
-//     return output;
-
-// }
-
-// console.log(calculateDouble(data1));
-// console.log(calculateDouble(data2));
-
-// const calculateHalf = function (data){
-//     let output =[]
-//     for (let i = 0; i<data. length; i++){
-//         output.push(data[i]/2);
-//     }
-// return output;
-// }
-
-// console.log(calculateHalf(data1));
-// console.log(calculateHalf(data2));
+// // /
 
 // // MAP
 
@@ -128,15 +103,15 @@
 // console.log(output2);
 
 
-// filter
+// // // filter
 
 
-const arr =[2,,3,4,5,6,7,8]
+// // const arr =[2,,3,4,5,6,7,8]
 
-function isOdd(x){
-    return x%2
-}
+// // function isOdd(x){
+// //     return x%2
+// // }
 
-const output = arr.filter(isOdd);
+// // const output = arr.filter(isOdd);
 
-console.log(output);
+// // console.log(output);

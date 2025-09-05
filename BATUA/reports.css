@@ -1,0 +1,236 @@
+/* Reports Styles */
+.reports {
+    padding: 3rem 0;
+}
+
+.reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.report-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.report-controls input {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.report-controls input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.report-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Report Summary */
+.report-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.summary-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.summary-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.summary-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.summary-card p {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+}
+
+/* Report Table */
+.report-table {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.report-table h3 {
+    padding: 2rem 2rem 0;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+#reportTableContent {
+    padding: 0 2rem 2rem;
+}
+
+.report-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.report-table th,
+.report-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.report-table th {
+    background: var(--bg-tertiary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.report-table td {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.report-table tr:last-child td {
+    border-bottom: none;
+}
+
+.report-table tr:hover td {
+    background: var(--bg-tertiary);
+}
+
+/* Print Styles */
+@media print {
+    .report-controls,
+    nav,
+    .nav-actions {
+        display: none !important;
+    }
+
+    .reports {
+        padding: 0;
+    }
+
+    .reports-header {
+        margin-bottom: 2rem;
+    }
+
+    .summary-card,
+    .chart-container,
+    .report-table {
+        box-shadow: none;
+        border: 1px solid #000;
+        break-inside: avoid;
+    }
+
+    .report-table {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .reports-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .report-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .report-controls input {
+        width: 100%;
+    }
+
+    .report-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        padding: 1.5rem;
+    }
+
+    .summary-card p {
+        font-size: 1.5rem;
+    }
+
+    .report-table h3 {
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    #reportTableContent {
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .report-table th,
+    .report-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reports {
+        padding: 2rem 0;
+    }
+
+    .reports-header {
+        margin-bottom: 2rem;
+    }
+
+    .summary-card h3 {
+        font-size: 1rem;
+    }
+
+    .summary-card p {
+        font-size: 1.25rem;
+    }
+
+    .report-table {
+        overflow-x: auto;
+    }
+
+    .report-table table {
+        min-width: 600px;
+    }
+}
